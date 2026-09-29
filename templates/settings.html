@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}设置{% endblock %}
+{% block scripts %}<script defer src="/static/js/settings.js"></script>{% endblock %}
+{% block content %}
+<main class="page"><div class="page-heading"><div><p class="eyebrow">CONFIGURATION</p><h1>系统设置</h1><p>配置保存到 YAML，重启服务后生效。System Prompt 修改立即生效。</p></div><a href="/debug" class="button">检查服务 →</a></div>
+<form id="config-form"><div id="config-fields" class="cards"></div><div class="save-bar"><span id="config-status"></span><button class="primary" type="submit">保存配置</button></div></form>
+<section class="card"><h2>System Prompt Profiles</h2><p>设为默认影响新对话；已有对话在主页选择绑定。编辑内容影响所有绑定到该 Prompt 的对话。</p><div class="prompt-layout"><div><label for="prompt-list">已保存的 Prompt</label><select id="prompt-list" size="6"></select><button id="new-prompt" type="button">＋ 新建 Prompt</button></div><form id="prompt-form"><label for="prompt-name">名称</label><input id="prompt-name" maxlength="100" required><label for="prompt-content">System Prompt</label><textarea id="prompt-content" rows="8" maxlength="12000" required></textarea><label class="checkbox"><input id="prompt-default" type="checkbox">设为默认</label><div class="row"><button class="primary" type="submit">保存 Prompt</button><button id="delete-prompt" class="danger" type="button">删除</button></div></form></div></section>
+</main>
+{% endblock %}

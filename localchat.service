@@ -1,0 +1,21 @@
+[Unit]
+Description=LocalChat Voice Assistant
+After=network-online.target sound.target ollama.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=zbq
+Group=zbq
+SupplementaryGroups=audio
+WorkingDirectory=/home/zbq/localchat
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/zbq/localchat/.venv/bin/python /home/zbq/localchat/run.py
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+KillMode=control-group
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

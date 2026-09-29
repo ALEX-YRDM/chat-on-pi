@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}调试{% endblock %}
+{% block scripts %}<script defer src="/static/js/debug.js"></script>{% endblock %}
+{% block content %}
+<main class="page"><div class="page-heading"><div><p class="eyebrow">DIAGNOSTICS</p><h1>逐步检查语音链路</h1><p>录音和本机播放发生在 Raspberry Pi；浏览器播放器使用当前设备的扬声器。</p></div><button id="refresh-health">刷新健康状态</button></div>
+<section class="card"><h2>System Health</h2><div id="health" class="health-grid"></div><pre id="health-details"></pre></section>
+<div class="cards">
+<section class="card"><span class="step">01 / INPUT</span><h2>Microphone</h2><p>使用配置中的 ALSA 麦克风录音 5 秒。</p><button id="test-mic">录音 5 秒</button><div id="mic-output" class="output"></div></section>
+<section class="card"><span class="step">02 / SPEECH TO TEXT</span><h2>Whisper</h2><label for="wav-select">选择已有 WAV（16kHz 单声道）</label><select id="wav-select"></select><div class="row"><button id="refresh-audio">刷新 WAV</button><button id="test-whisper" class="primary">Transcribe</button></div><pre id="whisper-output"></pre></section>
+<section class="card"><span class="step">03 / LANGUAGE MODEL</span><h2>Ollama</h2><label for="ollama-text">测试输入</label><textarea id="ollama-text" rows="3" maxlength="8000">你好</textarea><button id="test-ollama" class="primary">Send</button><pre id="ollama-output"></pre></section>
+<section class="card"><span class="step">04 / TEXT TO SPEECH</span><h2>Piper & Speaker</h2><label for="piper-text">合成文字</label><textarea id="piper-text" rows="3" maxlength="8000">你好，我是本地语音助手。</textarea><div class="row"><button id="test-piper" class="primary">Generate</button><button id="test-speaker" disabled>Play on Raspberry Pi</button></div><div id="piper-output" class="output"></div></section>
+</div>
+<section class="card"><h2>Full Pipeline Test</h2><p>创建测试对话，录音 5 秒 → Whisper → Ollama → Piper → 树莓派播放。结果保存到历史记录。</p><button id="test-pipeline" class="primary">开始全流程测试</button><pre id="pipeline-output"></pre></section>
+<section class="card"><div class="row"><h2>最近 Pipeline 结果</h2><button id="refresh-runs">刷新</button></div><pre id="runs-output"></pre></section>
+</main>
+{% endblock %}

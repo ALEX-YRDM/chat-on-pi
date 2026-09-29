@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+data/*
+!data/audio/
+data/audio/*
+!data/audio/.gitkeep
+logs/*
+!logs/.gitkeep
+*.onnx
+*.onnx.json
+.DS_Store

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LocalChat · {% block title %}Voice Assistant{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script defer src="/static/js/common.js"></script>
+  {% block scripts %}{% endblock %}
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/">◉ LocalChat <small>VOICE ASSISTANT</small></a>
+  <nav aria-label="主导航"><a href="/" {% if page == 'chat' %}aria-current="page"{% endif %}>对话</a><a href="/debug" {% if page == 'debug' %}aria-current="page"{% endif %}>调试</a><a href="/settings" {% if page == 'settings' %}aria-current="page"{% endif %}>设置</a></nav>
+  <div class="status"><span id="state-dot" class="dot"></span><span id="state">Connecting</span><small id="connection"></small></div>
+</header>
+<div id="notice" role="alert" hidden></div>
+{% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block scripts %}<script defer src="/static/js/app.js"></script>{% endblock %}
+{% block content %}
+<main class="chat-layout">
+  <aside class="sidebar"><button id="new-chat" class="primary wide">＋ 新建对话</button><p class="eyebrow">对话记录</p><div id="conversations"></div><p class="sidebar-note">本地模型 · 本地存储<br>语音使用树莓派连接的麦克风</p></aside>
+  <section class="chat-pane">
+    <div class="conversation-header"><h1 id="chat-title">开始一段对话</h1><label>Prompt <select id="chat-prompt" aria-label="当前对话的 System Prompt"></select></label></div>
+    <div id="messages" class="messages" aria-live="polite"><div class="empty"><h2>有什么想聊的？</h2><p>输入文字，或使用树莓派麦克风开始录音。</p></div></div>
+    <div id="timing" class="timing" aria-live="polite"></div>
+    <form id="chat-form" class="composer"><label class="sr-only" for="message">消息</label><textarea id="message" placeholder="输入消息…（Enter 发送，Shift + Enter 换行）" maxlength="8000" rows="2"></textarea><div class="composer-actions"><label class="checkbox"><input id="synthesize" type="checkbox" checked>生成语音</label><span id="record-time"></span><button type="button" id="record">🎤 开始录音</button><button id="send" class="primary" type="submit">发送 ↗</button></div></form>
+    <p class="footnote">半双工模式 · 回答及播放完成后，可继续录音</p>
+  </section>
+</main>
+{% endblock %}
